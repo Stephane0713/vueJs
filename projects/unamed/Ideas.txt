@@ -1,0 +1,11 @@
+Widgets
+
+	- Meteo
+	- Calender
+
+Components
+
+	- Interactives sliders
+	- Multiple steps form
+	- Interactives members list
+	- Navigation menu

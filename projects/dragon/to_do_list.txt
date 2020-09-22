@@ -1,0 +1,29 @@
+
+TO DO:
+
+- Une page
+- Listing complet des adhérents
+- Data sous format json
+- Responsive
+- Présence d'un 'bloc statistique'
+	- nbr de membres
+	- nbr d'actifs
+	- age moyen
+	- etc
+
+- Infos membre supplémentaires lors du clic sur son nom
+	- Nom
+	- Age
+	- Genre
+	- Tags
+	- Actif
+	- Adresse
+	- Email
+	- Tel
+- Couleurs imposées : #ce0033(rgb : 206 0 51)
+- Présence du logo : https://www.ascannesvolley.com/wp-content/uploads/2018/09/As_cannes_logo_noir.png
+- Une maquette par résolution
+
+Optionnel:
+
+- Ajout de fonctionnalités (searchbar, trie du tableau, etc)

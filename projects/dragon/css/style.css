@@ -1,0 +1,141 @@
+._is-primary {
+  background-color: #ce0033;
+  color: #fff;
+}
+
+._is-primary * {
+  color: #fff;
+}
+
+._is-primary:hover {
+  color: #fff;
+}
+
+._is-disabled {
+  opacity: 0.3;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}
+
+.nav-logo {
+  max-height: 3.5rem !important;
+  margin: -2rem 0;
+}
+
+.icon {
+  width: 1rem;
+  -webkit-filter: invert(1);
+          filter: invert(1);
+  cursor: pointer;
+}
+
+.switch {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: -webkit-transform 0.2s ease-in;
+  transition: -webkit-transform 0.2s ease-in;
+  transition: transform 0.2s ease-in;
+  transition: transform 0.2s ease-in, -webkit-transform 0.2s ease-in;
+}
+
+.switch.active {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.switch > * {
+  -webkit-box-flex: 100%;
+      -ms-flex: 100% 1 0px;
+          flex: 100% 1 0;
+}
+
+.members__list {
+  height: 22rem;
+  overflow-y: scroll;
+}
+
+.members__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+.members__name {
+  margin-right: auto;
+}
+
+.members__active {
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.members__more {
+  margin: auto 0;
+  margin-left: 2em;
+}
+
+.members__btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.member__details {
+  line-height: 2;
+}
+
+.member__back img {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+
+.member__status {
+  font-weight: 900;
+}
+
+.member__name {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.member__tag {
+  margin-right: 1em;
+}
+
+@media screen and (min-width: 768px) {
+  .member__details {
+    background-image: url("../assets/As_cannes_logo_noir.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: 80%;
+  }
+}
+
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+}
+/*# sourceMappingURL=style.css.map */

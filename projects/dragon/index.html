@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Dragons</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./data/database.min.json"></script>
+    <script src="./view/vue_app.js" defer></script>
+</head>
+
+<body>
+
+    <header class="header">
+        <nav class="navbar _is-primary" role="navigation" aria-label="main navigation">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="#">
+                        <img class="nav-logo" src="./assets/As_cannes_logo_noir.png" alt="AS Cannes logo">
+                    </a>
+
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id="vue_app">
+
+        <section class="section stats">
+            <div class="container">
+                <h2 class="title is-4">Statistiques</h2>
+                <div class="notification _is-primary">
+                    <div class="columns">
+                        <div class="column">
+                            <p class="stats__text">Membres: {{db.length}}</p>
+                            <p class="stats__text">Actifs: {{actives}}</p>
+                            <p class="stats__text">Age moyen: {{ageAverage}} ans</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="switch" :class="{active: details}">
+            <section class="section members">
+                <div class="container">
+                    <h2 class="title is-4">Membres</h2>
+                    <div class="members__search content">
+                        <label for="search">Search : </label>
+                        <input id="search" type="text" v-model="search">
+                        <span>{{dbFilter.length}} résultats</span>
+                        <span v-if="dbPages[page]">( {{dbPages[page].length}} sur cette page )</span>
+                    </div>
+                    <div class="columns is-multiline members__list">
+                        <div class="column is-one-third" v-for="member in dbPages[page]">
+                            <div class="notification _is-primary members__item">
+                                <div class="members__name">{{member.name}}</div>
+                                <div class="members__active" :class="{'_is-disabled': !member.isActive}">ACTIF</div>
+                                <div class="members__more" v-on:click="iUpdate(member.index, true)">
+                                    <img class="members__icon icon" src="./assets/svg/001-more.svg" alt="icon">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bloc members__btns" v-if="dbPages.length > 1">
+                        <div class="members__btn button" v-on:click="pageDec"> ← </div>
+      
+                        <div class="members__btn button" v-on:click="pageUpdate(0)" :class="{'_is-primary': page == 0}">1</div>                        
+                        <div class="members__btn button" v-on:click="pageUpdate(e)" :class="{'_is-primary': page == e}" v-for="e in pageBtns">{{e +1}}</div>
+                        <div class="members__btn button" v-on:click="pageUpdate(dbPages.length -1)" :class="{'_is-primary': page == dbPages.length -1}">{{dbPages.length}}</div>
+
+                        <div class="members__btn button" v-on:click="pageInc"> → </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section member">
+                <div class="container">
+                    <h2 class="title is-4">Infos membre</h2>
+                    <div class="member__details notification _is-primary">
+                        <div class="member__back" v-on:click="iUpdate(i, false)">
+                            <img class="member__icon icon" src="./assets/svg/001-fast-forward.svg" alt="icon">
+                        </div>
+                        <h3 class="title member__name">{{db[i].name}}</h3>
+                        <div class="member__status tag is-white" :class="{'_is-disabled': !db[i].isActive}">ACTIF</div>
+                        <div class="member__tags">
+                            <div class="member__tag tag is-white" v-for="tag in db[i].tags">{{tag}}</div>
+                        </div>
+                        <div class="member__age">{{db[i].age}} ans</div>
+                        <div class="member__gender">{{db[i].gender}}</div>
+                        <div class="member__tel">Tel : {{db[i].phone}}</div>
+                        <div class="member__email">E-mail : <a href="#">{{db[i].email}}</a></div>
+                        <div class="member__address">{{db[i].address}}</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer class="footer _is-primary">
+        <div class="container">
+            <p class="footer__text">Text Here</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

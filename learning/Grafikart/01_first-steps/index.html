@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css"
+        integrity="sha512-ADrqa2PY1TZtb/MoLZIZu/Z/LlPaWQeDMBV73EMwjGam43/JJ5fqW38Rq8LJOVGCDfrJeOMS3Q/wRUVzW5DkjQ=="
+        crossorigin="anonymous" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.common.dev.js"
+        integrity="sha512-r4jE7oCYv1xTgIB5LudpJK6oVI7USDyUXQtbwI/a6vWyZYsHTBWEa8R+UUbpN6cigOqlHsJNRc81mzLW9TfscQ=="
+        crossorigin="anonymous"></script>
+
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="block" id="app">
+                <!--Show the variable 'message'-->
+                {{message}} <br>
+
+                <!--Set a link to href = 'link' with 'v-bind:'-->
+                <a v-bind:href="link">{{message}}</a>
+                <br>
+
+                <!--Set a link to href = 'link + 'app' and title = 'message' + ' :3' with ':'-->
+                <a :href="link + 'app'" :title="message">{{message + ' :3'}}</a>
+
+                <div class="block">
+                    <!--Link the value of 'message' to the value of input (they influence each other)-->
+                    <input type="text" v-model="message">
+                </div>
+
+                <div class="block">
+                    <!--Link the value of 'success' to the value of check (they influence each other)-->
+                    <input type="checkbox" id="check" v-model="success">
+                    <label for="check">success = {{ success }}</label>
+                </div>
+
+                <!--DISPLAY a div.notification if 'success' == true-->
+                <div class="notification" v-show="success">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </div>
+                <!--The following div won't DISPLAY unless !success == false-->
+                <div class="notification is-warning" v-show="!success">Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit.</div>
+
+                <!--CREATE a div.notification if 'success' == true-->
+                <div class="notification" v-if="success">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                <!--When the condition 'v-if = "success"' is false 'v-else' create the following div instead-->
+                <div class="notification is-danger" v-else>!! ERROR !!</div>
+
+                <div class="content">
+                    <ul>
+                        <!--Loop throught the array 'list' and create an li for every item in the array with 'v-for'-->
+                        <li v-for="item in list">{{ item }}</li>
+                    </ul>
+                </div>
+
+                <div class="notification">
+                    <!--Create an event on click with 'v-on:click' that call the function close()-->
+                    <button class="delete" v-on:click="close()"></button>
+
+                    <!--Create an event on click with '@click' that call the function close()-->
+                    <button class="button is-warning" @click="close()">Close</button>
+                    <p v-if="!closed">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem dolor
+                        voluptates possimus neque quasi, quas accusantium facilis, vel a aliquid aperiam ullam eum nisi
+                        nulla
+                        odio animi, laboriosam facere consequuntur.
+                    </p>
+                </div>
+
+
+                <div class="block">
+                    <!--Change the style with ':style')-->
+                    <div class="notification" :style="{'background': '#faf'}">Lorem ipsum dolor sit
+                        amet
+                        consectetur adipisicing elit. Eius, rerum!</div>
+                </div>
+
+                <div class="block">
+                    <input type="checkbox" id="color" v-model="color">
+                    <label for="color">Color</label>
+
+                    <!--Change the class depending on the state of 'color' with ':class' (ternary)-->
+                    <div class="notification" :class="color ? 'is-success' : 'is-danger'">Lorem ipsum dolor sit amet
+                        consectetur adipisicing elit. Eius, rerum!</div>
+                    <!--Change the class depending on the state of 'color' with ':class' (object)-->
+                    <div class="notification" :class="{'is-success': color, 'is-danger': !color}">Lorem ipsum dolor sit
+                        amet
+                        consectetur adipisicing elit. Eius, rerum!</div>
+
+                    <input type="checkbox" id="class2" v-model="cls" :true-value="'is-success'"
+                        :false-value="'is-danger'">
+                    <label for="class2">class2</label>
+                    <!--Change the class to value set in ':true-value / false-value' depending on the state of 'class2'-->
+                    <div class="notification" :class="cls">Lorem ipsum dolor sit
+                        amet
+                        consectetur adipisicing elit. Eius, rerum!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
